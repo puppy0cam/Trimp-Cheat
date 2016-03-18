@@ -7,9 +7,9 @@
 // @match        http://trimps.github.io/*
 // @grant        none
 // @include      http://trimps.github.io/*
+// @updateURL    http://puppy0cam.guppygalaxy.com/Trimp-Cheat/Trimps.user.js
 // ==/UserScript==
 /* jshint -W097 */
-;
 
 function addItem(type, content) {
     var addTag = document.createElement(type); //declares variable in preperation of inserting into page, also determines what type of element it will be.
