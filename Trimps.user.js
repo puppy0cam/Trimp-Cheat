@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Trimps
+// @name         Trimp Cheat Tool
 // @namespace    http://puppy0cam.guppygalaxy.com/
 // @version      0.1.1
 // @description  allows you to use the following Functions: ruinTheFun(); buyStuff("Barn,Shed,Forge");
@@ -8,6 +8,8 @@
 // @grant        none
 // @include      http://trimps.github.io/*
 // @updateURL    http://puppy0cam.guppygalaxy.com/Trimp-Cheat/Trimps.user.js
+// @downloadURL  http://puppy0cam.guppygalaxy.com/Trimp-Cheat/Trimps.user.js
+// @run-at       document-end
 // ==/UserScript==
 /* jshint -W097 */
 
