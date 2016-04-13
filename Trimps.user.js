@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Trimp Cheat Tool
 // @namespace    http://puppy0cam.guppygalaxy.com/
-// @version      0.1.1
+// @version      0.1.2
 // @description  allows you to cheat in trimps
 // @author       puppy0cam
 // @match        http://trimps.github.io/*
