@@ -41,3 +41,8 @@ function heirloomFinding() {
     game.heirlooms.rarities[9][5] = 3000;
     game.heirlooms.rarities[9][6] = 1000;
 }
+function sellHeirloom() {
+    selectHeirloom(game.global.heirloomsExtra.length - 1, 'heirloomsExtra', this);
+    recycleHeirloom(true);
+}
+extraHeirlooms.innerHTML = extraHeirlooms.innerHTML + '<div id="sellHeirlooms" class="noselect heirloomBtnActive heirBtn" onclick="sellHeirloom()">Sell one</div>';
