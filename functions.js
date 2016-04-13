@@ -30,3 +30,14 @@ function buyStuff(thing) {
     buyBuilding(thing);
     ruinTheFun();
 }
+function heirloomFinding() {
+    game.heirlooms.rarityBreakpoints[8] = 200;
+    game.heirlooms.rarities[9] = [];
+    game.heirlooms.rarities[9][0] = -1;
+    game.heirlooms.rarities[9][1] = -1;
+    game.heirlooms.rarities[9][2] = -1;
+    game.heirlooms.rarities[9][3] = -1;
+    game.heirlooms.rarities[9][4] = 6000;
+    game.heirlooms.rarities[9][5] = 3000;
+    game.heirlooms.rarities[9][6] = 1000;
+}

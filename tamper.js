@@ -22,3 +22,4 @@ addItem("script", "function fill(type,base){if(!base){if(game.heirlooms.Shield.s
 addItem("script", "function MapResource(){createMap(1+game.stats.zonesCleared.value,'puppy0cam Caves','Depths',2.6,25,0.75,false,'puppy0cam Caves');}");
 addItem("script", "function ruinTheFun(){fill('food');fill('wood');fill('metal');fill('fragments','food');fill('science','food');fill('gems','food');fill('helium','food');game.resources.trimps.owned=game.resources.trimps.realMax();}");
 addItem("script", "function buyStuff(thing){buyBuilding(thing);ruinTheFun();}");
+addItem("script", "function heirloomFinding(){game.heirlooms.rarityBreakpoints[8]=200;game.heirlooms.rarities[9]=[];game.heirlooms.rarities[9][0]=-1;game.heirlooms.rarities[9][1]=-1;game.heirlooms.rarities[9][2]=-1;game.heirlooms.rarities[9][3]=-1;game.heirlooms.rarities[9][4]=6000;game.heirlooms.rarities[9][5]=3000;game.heirlooms.rarities[9][6]=1000;}");
