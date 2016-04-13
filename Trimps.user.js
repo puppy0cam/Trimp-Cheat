@@ -1,15 +1,17 @@
 // ==UserScript==
-// @name         Trimps
+// @name         Trimp Cheat Tool
 // @namespace    http://puppy0cam.guppygalaxy.com/
 // @version      0.1.1
-// @description  allows you to use the following Functions: ruinTheFun(); buyStuff("Barn,Shed,Forge");
+// @description  allows you to cheat in trimps
 // @author       puppy0cam
 // @match        http://trimps.github.io/*
 // @grant        none
 // @include      http://trimps.github.io/*
+// @updateURL    http://puppy0cam.guppygalaxy.com/Trimp-Cheat/Trimps.user.js
+// @downloadURL  http://puppy0cam.guppygalaxy.com/Trimp-Cheat/Trimps.user.js
+// @run-at       document-end
 // ==/UserScript==
 /* jshint -W097 */
-;
 
 function addItem(type, content) {
     var addTag = document.createElement(type); //declares variable in preperation of inserting into page, also determines what type of element it will be.
