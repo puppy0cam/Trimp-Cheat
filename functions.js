@@ -42,7 +42,11 @@ function heirloomFinding() {
     game.heirlooms.rarities[9][6] = 1000;
 }
 function sellHeirloom() {
-    selectHeirloom(game.global.heirloomsExtra.length - 1, 'heirloomsExtra', this);
-    recycleHeirloom(true);
+	if (game.global.heirloomsExtra[0] == undefined) {
+        message("ALERT: you do not have an heirloom to sell!", "Notices");
+    } else {
+        selectHeirloom(game.global.heirloomsExtra.length - 1, 'heirloomsExtra', this);
+        recycleHeirloom(true);
+    }
 }
 extraHeirlooms.innerHTML = extraHeirlooms.innerHTML + '<div id="sellHeirlooms" class="noselect heirloomBtnActive heirBtn" onclick="sellHeirloom()">Sell one</div>';

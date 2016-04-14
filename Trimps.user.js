@@ -25,5 +25,5 @@ addItem("script", "function MapResource(){createMap(1+game.stats.zonesCleared.va
 addItem("script", "function ruinTheFun(){fill('food');fill('wood');fill('metal');fill('fragments','food');fill('science','food');fill('gems','food');fill('helium','food');game.resources.trimps.owned=game.resources.trimps.realMax();}");
 addItem("script", "function buyStuff(thing){buyBuilding(thing);ruinTheFun();}");
 addItem("script", "function heirloomFinding(){game.heirlooms.rarityBreakpoints[8]=200;game.heirlooms.rarities[9]=[];game.heirlooms.rarities[9][0]=-1;game.heirlooms.rarities[9][1]=-1;game.heirlooms.rarities[9][2]=-1;game.heirlooms.rarities[9][3]=-1;game.heirlooms.rarities[9][4]=6000;game.heirlooms.rarities[9][5]=3000;game.heirlooms.rarities[9][6]=1000;}");
-addItem("script", "function sellHeirloom(){selectHeirloom(game.global.heirloomsExtra.length-1,'heirloomsExtra',this);recycleHeirloom(true);}");
+addItem("script", "function sellHeirloom(){if(game.global.heirloomsExtra[0]==undefined){message('ALERT: you do not have an heirloom to sell!','Notices');}else{selectHeirloom(game.global.heirloomsExtra.length-1,'heirloomsExtra',this);recycleHeirloom(true);}}");
 extraHeirlooms.innerHTML = extraHeirlooms.innerHTML + '<div id="sellHeirlooms" class="noselect heirloomBtnActive heirBtn" onclick="sellHeirloom()">Sell one</div>'
