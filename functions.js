@@ -50,4 +50,3 @@ window.sellHeirloom = function() {
     }
 }
 window.extraHeirlooms.innerHTML = extraHeirlooms.innerHTML + '<div id="sellHeirlooms" class="noselect heirloomBtnActive heirBtn" onclick="sellHeirloom()">Sell one</div>';
-window.battleBtnsColumn.innerHTML = battleBtnsColumn.innerHTML + '<div id="newMap" class="btn fightBtn btn-success" onclick="MapResource()">New Map</div>';
