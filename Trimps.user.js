@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Trimp Cheat Tool
 // @namespace    http://puppy0cam.guppygalaxy.com/
-// @version      0.1.5
+// @version      0.1.6
 // @description  access the cheat tool when you are playing Trimps.github.io please note that to avoid Kongregate cheating this cheat will not activate on the Kongregate version. access the cheat tool through the tampermonkey extension button. there are other functions but they are used to simplify the addition of future cheats.
 // @author       puppy0cam
 // @match        http://trimps.github.io/*
@@ -32,7 +32,7 @@ if (window.game !== undefined) {
 	};
 	window.cheat.mapResource = function () {
 		window.createMap(1 + window.game.stats.zonesCleared.value, "puppy0cam Caves", "Depths", 2.6, 25, 0.75, false, "puppy0cam Caves");
-	};
+	
 	window.cheat.ruinTheFun = function () {
 		window.cheat.fill('food');
 		window.cheat.fill('wood');
@@ -66,8 +66,42 @@ if (window.game !== undefined) {
 			window.recycleHeirloom(true);
 		}
 	};
+	window.game.badGuys.Improbability.loot = function(level) {
+		if (!game.global.brokenPlanet) planetBreaker();
+		var amt = rewardResource("helium", 5, level);
+		game.global.totalHeliumEarned += amt;
+		message("<span class='glyphicon glyphicon-oil'></span> You managed to steal " + prettify(amt) + " Helium canisters from that Improbability. That'll teach it.", "Loot");
+		distributeToChallenges(amt);
+		if (game.global.challengeActive == "Slow" && game.global.world == 120){
+			message("You have completed the Slow challenge! You have found the patterns for the Gambeson and the Arbalest!", "Notices");
+			game.global.challengeActive = "";
+			if (!game.global.slowDone){
+				unlockEquipment("Arbalest");
+				unlockEquipment("Gambeson");
+			}
+		game.global.slowDone = true;
+		}
+		else if ((game.global.challengeActive == "Nom" && game.global.world == 145) || (game.global.challengeActive == "Toxicity" && game.global.world == 165) || ((game.global.challengeActive == "Watch" || game.global.challengeActive == "Lead") && game.global.world >= 180)){
+			var challenge = game.global.challengeActive;
+			var reward = (game.challenges[challenge].heliumMultiplier) ? game.challenges[challenge].heliumMultiplier : 2;
+			reward = game.challenges[challenge].heldHelium * reward;
+			message("You have completed the " + challenge + " challenge! You have been rewarded with " + prettify(reward) + " Helium, and you may repeat the challenge.", "Notices");
+			game.resources.helium.owned += reward;
+			game.global.totalHeliumEarned += reward;
+			game.challenges[challenge].heldHelium = 0;
+			game.global.challengeActive = "";
+		}
+		else if (game.global.challengeActive == "Mapology" && game.global.world == 100){
+			message("You have completed the Mapology challenge! You have unlocked the 'Resourceful' Perk! Cheaper stuff!", "Notices");
+			game.global.challengeActive = "";
+			game.portal.Resourceful.locked = false;
+			game.challenges.Mapology.abandon();
+		}
+	};
 	window.extraHeirlooms.innerHTML = extraHeirlooms.innerHTML + '<div id="sellHeirlooms" class="noselect heirloomBtnActive heirBtn" onclick="window.cheat.sellHeirloom()">Sell one</div>';
 	delete window.addItem;
+	window.message("Trimp Cheats by puppy0cam loaded: to access the basic cheats open the tampermonkey extension button.", "Notices");
+	window.message("to access the complex cheats you can use your browser's developer tools. the cheats are stored in 'cheat' as an object", "Notices");
 }
 GM_registerMenuCommand('Create Ideal Map', function () {
 	window.cheat.mapResource();

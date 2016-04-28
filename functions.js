@@ -50,3 +50,35 @@ window.cheat.sellHeirloom = function() {
     }
 }
 window.extraHeirlooms.innerHTML = extraHeirlooms.innerHTML + '<div id="sellHeirlooms" class="noselect heirloomBtnActive heirBtn" onclick="sellHeirloom()">Sell one</div>';
+window.game.badGuys.Improbability.loot = function(level) {
+	if (!game.global.brokenPlanet) planetBreaker();
+	var amt = rewardResource("helium", 5, level);
+	game.global.totalHeliumEarned += amt;
+	message("<span class='glyphicon glyphicon-oil'></span> You managed to steal " + prettify(amt) + " Helium canisters from that Improbability. That'll teach it.", "Loot");
+	distributeToChallenges(amt);
+	if (game.global.challengeActive == "Slow" && game.global.world == 120){
+		message("You have completed the Slow challenge! You have found the patterns for the Gambeson and the Arbalest!", "Notices");
+		game.global.challengeActive = "";
+		if (!game.global.slowDone){
+			unlockEquipment("Arbalest");
+			unlockEquipment("Gambeson");
+		}
+	game.global.slowDone = true;
+	}
+	else if ((game.global.challengeActive == "Nom" && game.global.world == 145) || (game.global.challengeActive == "Toxicity" && game.global.world == 165) || ((game.global.challengeActive == "Watch" || game.global.challengeActive == "Lead") && game.global.world >= 180)){
+		var challenge = game.global.challengeActive;
+		var reward = (game.challenges[challenge].heliumMultiplier) ? game.challenges[challenge].heliumMultiplier : 2;
+		reward = game.challenges[challenge].heldHelium * reward;
+		message("You have completed the " + challenge + " challenge! You have been rewarded with " + prettify(reward) + " Helium, and you may repeat the challenge.", "Notices");
+		game.resources.helium.owned += reward;
+		game.global.totalHeliumEarned += reward;
+		game.challenges[challenge].heldHelium = 0;
+		game.global.challengeActive = "";
+	}
+	else if (game.global.challengeActive == "Mapology" && game.global.world == 100){
+		message("You have completed the Mapology challenge! You have unlocked the 'Resourceful' Perk! Cheaper stuff!", "Notices");
+		game.global.challengeActive = "";
+		game.portal.Resourceful.locked = false;
+		game.challenges.Mapology.abandon();
+	}
+};
